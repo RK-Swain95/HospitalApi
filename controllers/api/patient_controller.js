@@ -68,12 +68,12 @@ module.exports.createReport= async function(req,res){
     }
 }
 
-// find patient report by status
+// find patient report
 module.exports.allReports=async function(req,res){
     try{
 
         let patient=await Patient.findById(req.params.id)
-        //if patient not found by status
+        //if patient not found by id
         if(!patient){
             return res.json(200,{
                 message:"Invaid patient Id"
