@@ -4,6 +4,7 @@
   "description": "about doctor and patients details",
   "main": "index.js",
   "scripts": {
+    "start": "node index.js",
     "hospital": "nodemon index.js"
   },
   "author": "coding ninjas",
