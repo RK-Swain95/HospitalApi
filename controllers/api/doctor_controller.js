@@ -43,7 +43,7 @@ module.exports.createSession=function(req,res){
                 message:"log in successfully keeep the token safe !!",
                 //generating the token
                 data:{
-                    token:jwt.sign(doctor.toJSON(),'hospital',{expiresIn:'100000'})
+                    token:jwt.sign(doctor.toJSON(),'hospital',{expiresIn:'1000000'})
                 }
             });
         }});

@@ -13,10 +13,11 @@ var opts = {
 }
 
 passport.use(new JwtStrategy(opts,function(jwtPayLoad,done){
-    console.log(jwtPayLoad);
+   // console.log(jwtPayLoad);
     Doctor.findById(jwtPayLoad._id,function(err,doctor){
         if(err){console.log('error in finding the doctor from jwt'); return;}
         if(doctor){
+            console.log(doctor);
             return done(null,doctor);
         }else{
             return done(null,false);

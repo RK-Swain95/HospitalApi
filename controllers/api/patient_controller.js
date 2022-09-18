@@ -3,6 +3,7 @@ const Doctor=require('../../models/doctors');
 const Report=require('../../models/reports');
 
 
+
 //to Register the patient in the app (using phone number, if the patient already exists, just return the patient info in the API)
 module.exports.create= async function(req,res){
     try{
@@ -41,7 +42,9 @@ module.exports.create= async function(req,res){
 module.exports.createReport= async function(req,res){
     try{
         //find doctor and patient from db and params
-        let doctor= await Doctor.findById(req.body.DoctorId);
+        //let doctor= await Doctor.findById(req.body.DoctorId);
+        console.log(req.user);
+        let doctor=await Doctor.findById(req.user["_id"]);
         let patient= await Patient.findById(req.params.id);
         //if not found
         if(!patient || !doctor){
@@ -52,7 +55,8 @@ module.exports.createReport= async function(req,res){
             //if found both then create report
             Report.create({
                 patientId:req.params.id,
-                DoctorId:req.body.DoctorId,
+                //DoctorId:req.body.DoctorId,
+               DoctorId:req.user["_id"],
                 status: req.body.status,
                 date:req.body.date
             });
@@ -62,6 +66,8 @@ module.exports.createReport= async function(req,res){
         }
 
     }catch(err){
+       
+        console.log(err);
         return res.json(500,{
             message:"error in finding patient"
         });
