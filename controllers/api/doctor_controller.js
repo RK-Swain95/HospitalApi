@@ -1,6 +1,6 @@
 const Doctor=require('../../models/doctors');
 const jwt = require('jsonwebtoken');
-
+//for doctor
 //to create registration for doctors
 module.exports.create= function(req,res){
     Doctor.findOne({username:req.body.username},function(err,doctor){

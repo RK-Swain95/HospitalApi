@@ -1,7 +1,7 @@
 const express= require('express');
 const app= express();
 
-const port=process.env.PORT || 8000;
+const port=process.env.PORT || 8002;
 const passport=require('passport');
 const db=require('./config/mongoose');
 

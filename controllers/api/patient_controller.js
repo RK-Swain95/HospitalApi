@@ -43,7 +43,8 @@ module.exports.createReport= async function(req,res){
     try{
         //find doctor and patient from db and params
         //let doctor= await Doctor.findById(req.body.DoctorId);
-        console.log(req.user);
+        //console.log(req.user);
+        //console.log(req.headers);
         let doctor=await Doctor.findById(req.user["_id"]);
         let patient= await Patient.findById(req.params.id);
         //if not found
